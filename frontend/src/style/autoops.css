@@ -1,0 +1,306 @@
+/* AutoOps legacy compatibility theme: dark DevOps Console */
+:root,
+html.dark {
+  --autoops-primary: var(--ds-accent, #3b82f6);
+  --autoops-primary-light: var(--ds-accent-hover, #60a5fa);
+  --autoops-primary-lighter: var(--ds-bg-info-subtle, rgba(59, 130, 246, 0.12));
+  --autoops-success: var(--ds-success, #22c55e);
+  --autoops-warning: var(--ds-warning, #f59e0b);
+  --autoops-danger: var(--ds-error, #ef4444);
+  --autoops-info: var(--ds-info, #3b82f6);
+  --autoops-bg-page: var(--ds-bg-app, #0d1117);
+  --autoops-bg-card: var(--ds-bg-surface, #161b22);
+  --autoops-bg-hover: var(--ds-bg-hover, rgba(255, 255, 255, 0.04));
+  --autoops-border-base: var(--ds-border-default, rgba(255, 255, 255, 0.10));
+  --autoops-border-light: var(--ds-border-subtle, rgba(255, 255, 255, 0.06));
+  --autoops-border-lighter: var(--ds-border-subtle, rgba(255, 255, 255, 0.06));
+  --autoops-text-primary: var(--ds-text-primary, #f0f6fc);
+  --autoops-text-regular: var(--ds-text-secondary, #c9d1d9);
+  --autoops-text-secondary: var(--ds-text-tertiary, #8b949e);
+  --autoops-text-placeholder: var(--ds-text-muted, #6e7681);
+  --autoops-shadow-light: none;
+  --autoops-shadow-base: none;
+  --autoops-shadow-hover: none;
+  --autoops-radius-small: 4px;
+  --autoops-radius-base: 6px;
+  --autoops-radius-large: 8px;
+  --autoops-spacing-xs: 4px;
+  --autoops-spacing-sm: 8px;
+  --autoops-spacing-md: 16px;
+  --autoops-spacing-lg: 20px;
+  --autoops-spacing-xl: 24px;
+}
+
+body {
+  background-color: var(--autoops-bg-page) !important;
+}
+
+.autoops-container {
+  min-height: 100vh;
+  padding: var(--autoops-spacing-lg);
+  background-color: var(--autoops-bg-page);
+  color: var(--autoops-text-regular);
+}
+
+.autoops-card,
+.autoops-filter-bar,
+.autoops-table-wrapper,
+.page-header-card,
+.content-card,
+.cyber-card {
+  border: 1px solid var(--autoops-border-base) !important;
+  border-radius: var(--autoops-radius-large) !important;
+  background: var(--autoops-bg-card) !important;
+  box-shadow: none !important;
+}
+
+.autoops-card-body,
+.autoops-dialog .el-dialog__body {
+  padding: var(--autoops-spacing-lg);
+}
+
+.autoops-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--autoops-spacing-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--autoops-spacing-md);
+  padding: var(--autoops-spacing-md);
+}
+
+.autoops-filter-label,
+.selector-label,
+.page-header p,
+.cyber-header p {
+  color: var(--autoops-text-secondary) !important;
+}
+
+.page-header p,
+.cyber-header p {
+  display: none;
+}
+
+.page-header h1,
+.page-header h2,
+.cyber-header h1,
+.cyber-header h2 {
+  color: var(--autoops-text-primary) !important;
+}
+
+.autoops-input .el-input__wrapper,
+.autoops-select .el-select__wrapper,
+.autoops-form .el-input__wrapper,
+.autoops-form .el-textarea__inner {
+  border-radius: var(--autoops-radius-base) !important;
+  background: var(--ds-bg-surface-2, #1c212b) !important;
+  box-shadow: 0 0 0 1px var(--autoops-border-base) inset !important;
+}
+
+.autoops-btn-primary {
+  border: 1px solid var(--autoops-primary) !important;
+  border-radius: var(--autoops-radius-base) !important;
+  background: var(--autoops-primary) !important;
+  color: #ffffff !important;
+  font-weight: 500;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.autoops-btn-secondary,
+.autoops-btn-success {
+  border: 1px solid var(--autoops-border-base) !important;
+  border-radius: var(--autoops-radius-base) !important;
+  background: var(--ds-bg-surface-2, #1c212b) !important;
+  color: var(--autoops-text-regular) !important;
+  box-shadow: none !important;
+}
+
+.autoops-btn-primary:hover,
+.autoops-btn-secondary:hover,
+.autoops-btn-success:hover {
+  border-color: var(--autoops-primary-light) !important;
+  background: var(--ds-bg-hover, rgba(255,255,255,0.04)) !important;
+  color: var(--autoops-text-primary) !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.autoops-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.autoops-action-btn {
+  width: 30px;
+  height: 30px;
+  padding: 0 !important;
+  border: 1px solid var(--autoops-border-base) !important;
+  border-radius: var(--autoops-radius-base) !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ds-bg-surface-2, #1c212b) !important;
+  box-shadow: none !important;
+  transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+  transform: none !important;
+}
+
+.autoops-action-btn:hover {
+  background: var(--autoops-bg-hover) !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.autoops-action-btn.view,
+.autoops-action-btn.logs { color: var(--autoops-primary-light) !important; }
+.autoops-action-btn.edit,
+.autoops-action-btn.scale { color: var(--autoops-warning) !important; }
+.autoops-action-btn.delete { color: var(--autoops-danger) !important; }
+.autoops-action-btn.shell { color: var(--autoops-text-secondary) !important; }
+.autoops-action-btn.update,
+.autoops-action-btn.cleanup { color: var(--autoops-success) !important; }
+.autoops-action-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.autoops-table.el-table {
+  --el-table-bg-color: var(--autoops-bg-card) !important;
+  --el-table-tr-bg-color: var(--autoops-bg-card) !important;
+  --el-table-header-bg-color: var(--ds-bg-surface-2, #1c212b) !important;
+  --el-table-row-hover-bg-color: var(--autoops-bg-hover) !important;
+  --el-table-border-color: var(--autoops-border-light) !important;
+  --el-table-text-color: var(--autoops-text-regular) !important;
+  --el-table-header-text-color: var(--autoops-text-secondary) !important;
+  border-radius: var(--autoops-radius-large);
+  background-color: var(--autoops-bg-card) !important;
+  overflow: hidden;
+}
+
+.autoops-table .el-table__inner-wrapper,
+.autoops-table .el-table__header-wrapper,
+.autoops-table .el-table__body-wrapper,
+.autoops-table .el-table__body tr,
+.autoops-table .el-table__body td {
+  background-color: var(--autoops-bg-card) !important;
+}
+
+.autoops-table .el-table__header th,
+.autoops-table th.el-table__cell {
+  border-bottom: 1px solid var(--autoops-border-light) !important;
+  background-color: var(--ds-bg-surface-2, #1c212b) !important;
+  color: var(--autoops-text-secondary) !important;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.autoops-table .el-table__body td {
+  border-bottom: 1px solid var(--autoops-border-light) !important;
+  color: var(--autoops-text-regular) !important;
+  font-size: 13px;
+}
+
+.autoops-table .el-table__body tr:hover > td {
+  background-color: var(--autoops-bg-hover) !important;
+}
+
+.autoops-table .el-table__cell .cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.autoops-table .el-table__cell:first-child .cell {
+  justify-content: flex-start;
+}
+
+.autoops-tag,
+.autoops-tag.success,
+.autoops-tag.warning,
+.autoops-tag.danger,
+.autoops-tag.info {
+  border: 1px solid currentColor !important;
+  border-radius: 999px !important;
+  background: transparent !important;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.autoops-tag.success { color: var(--autoops-success) !important; }
+.autoops-tag.warning { color: var(--autoops-warning) !important; }
+.autoops-tag.danger { color: var(--autoops-danger) !important; }
+.autoops-tag.info,
+.autoops-tag { color: var(--autoops-info) !important; }
+
+.autoops-resource-icon {
+  width: 32px;
+  height: 32px;
+  border: 1px solid currentColor;
+  border-radius: var(--autoops-radius-base);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  background: transparent;
+}
+
+.autoops-pagination {
+  display: flex;
+  justify-content: center;
+  padding: var(--autoops-spacing-lg) 0;
+}
+
+.autoops-dialog .el-dialog {
+  border: 1px solid var(--autoops-border-base) !important;
+  border-radius: var(--autoops-radius-large) !important;
+  background: var(--autoops-bg-card) !important;
+  box-shadow: none !important;
+}
+
+.autoops-dialog .el-dialog__header {
+  padding: var(--autoops-spacing-lg);
+  border-bottom: 1px solid var(--autoops-border-light);
+}
+
+.autoops-dialog .el-dialog__title,
+.autoops-form .el-form-item__label {
+  color: var(--autoops-text-primary) !important;
+  font-weight: 600;
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(148, 163, 184, 0.28); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(148, 163, 184, 0.42); }
+
+.autoops-fade-in { animation: autoops-fade-in 0.3s ease; }
+.autoops-pulse { animation: autoops-pulse 2s ease-in-out infinite; }
+
+@keyframes autoops-fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes autoops-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@media (max-width: 768px) {
+  .autoops-filter-bar { flex-direction: column; align-items: stretch; }
+  .autoops-action-btn { width: 28px; height: 28px; }
+}
+
+.autoops-text-primary { color: var(--autoops-text-primary); }
+.autoops-text-regular { color: var(--autoops-text-regular); }
+.autoops-text-secondary { color: var(--autoops-text-secondary); }
+.autoops-mt-md { margin-top: var(--autoops-spacing-md); }
+.autoops-mb-md { margin-bottom: var(--autoops-spacing-md); }
+.autoops-ml-sm { margin-left: var(--autoops-spacing-sm); }
+.autoops-mr-sm { margin-right: var(--autoops-spacing-sm); }
+.autoops-flex { display: flex; }
+.autoops-flex-center { display: flex; align-items: center; justify-content: center; }
+.autoops-flex-between { display: flex; justify-content: space-between; align-items: center; }
+.autoops-text-center { text-align: center; }
+.autoops-text-left { text-align: left; }
+.autoops-text-right { text-align: right; }

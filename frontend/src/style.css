@@ -1,0 +1,5 @@
+/* Legacy compatibility entry.
+   Global styles are sourced from src/styles/*.css and src/style/*.css. */
+:root {
+  color-scheme: light;
+}
