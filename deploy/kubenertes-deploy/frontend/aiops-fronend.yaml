@@ -27,6 +27,7 @@ spec:
       containers:
       - name: frontend
         image: aiops-frontend:latest
+        imagePullPolicy: IfNotPresent
         ports:
         - name: web
           containerPort: 80
