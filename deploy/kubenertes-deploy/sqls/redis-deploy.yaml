@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: redis
-        iamge: swr.cn-north-4.myhuaweicloud.com/ddn-k8s/docker.io/redis:7.0.5-alpine
+        image: swr.cn-north-4.myhuaweicloud.com/ddn-k8s/docker.io/redis:7.0.5-alpine
         imagePullPolicy: Always
         env:
         - name: REDIS_PASSWORD
