@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
       - name: aiops-backend-container
-        image: 
+        image: aiops-backend:latest
         ports:
         - name: server
           containerPort: 8081

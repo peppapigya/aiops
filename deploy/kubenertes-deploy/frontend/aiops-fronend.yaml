@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: nginx:1.29
+        image: aiops-frontend:latest
         ports:
         - name: web
           containerPort: 80
