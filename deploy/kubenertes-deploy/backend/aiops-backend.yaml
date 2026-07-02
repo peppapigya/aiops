@@ -35,21 +35,21 @@ spec:
           containerPort: 9001
         env:
         - name: DB_PORT
-          value: 3306
+          value: "3306"
         - name: DB_HOST
-          value: mysql-svc
+          value: "mysql-svc"
         - name: DB_USER
-          value: aiops
+          value: "aiops"
         - name: DB_PASSWORD
-          value: 123456
+          value: "123456"
         - name: DB_NAME
-          value: aiops
+          value: "aiops"
         - name: REDIS_HOST
-          value: redis-svc
+          value: "redis-svc"
         - name: REDIS_PORT
-          value: 6379
+          value: "6379"
         - name: REDIS_PASSWORD
-          value: 123456
+          value: "123456"
         resources:
           limits:
             memory: 1Gi
