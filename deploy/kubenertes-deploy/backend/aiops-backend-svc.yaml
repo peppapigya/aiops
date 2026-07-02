@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: aiops-backend-svc
+  labels:
+    app: backend-svc
+    component: aiops
+  namespace: aiops
+spec:
+  selector:
+    matchLabels:
+      app: backend
+      component: aiops
+  type: ClusterIP
+  ports:
+  - port: 8081
+    targetPort: server
+    protocol: TCP
+  - port: 9001
+    targetPort: matrics
+    protocol: TCP

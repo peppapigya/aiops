@@ -31,7 +31,7 @@ logging:
 
 # 应用配置
 app:
-  name: "${APP_NAME:DevOps Console}"
+  name: "${APP_NAME:AiOps}"
   version: "${APP_VERSION:1.0.0}"
   environment: "${APP_ENVIRONMENT:development}"  # development, production
 

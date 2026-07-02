@@ -1,0 +1,95 @@
+
+services:
+  db:
+    image: swr.cn-north-4.myhuaweicloud.com/ddn-k8s/docker.io/mysql:8.0.45
+    container_name: mysql_container
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: aiops
+      MYSQL_DATABASE: aiops
+      MYSQL_USER: aiops
+      MYSQL_PASSWORD: aiops
+    ports:
+    - "3306:3306"
+    volumes:
+      - ./sqls:/docker-entrypoint-initdb.d
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/conf.d:/etc/mysql/conf.d
+    networks:
+      - aiops_network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    command: >
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_unicode_ci
+      --default-time-zone=+08:00
+      --log-bin-trust-function-creators=1
+  redis:
+    image: swr.cn-north-4.myhuaweicloud.com/ddn-k8s/docker.io/redis:7.0.5-alpine
+    container_name: redis_container
+    restart: unless-stopped
+    environment:
+      REDIS_PASSWORD: "123456"
+    ports:
+    - "6379:6379"
+    networks:
+      - aiops_network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+    container_name: backend_container
+    restart: unless-stopped
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_USER: aiops
+      DB_PASSWORD: aiops
+      DB_NAME: aiops
+      # redis配置
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: "123456"
+    ports:
+    - "8081:8081"
+    - "9001:9001"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - aiops_network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8081/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+  frontend:
+    build:
+      context: ./frontend
+    container_name: frontend_container
+    restart: unless-stopped
+    ports:
+    - "80:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - aiops_network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80"]
+      interval: 30s
+      timeout: 10s
+      retries: 5  
+
+
+networks:
+  aiops_network:
+    driver: bridge

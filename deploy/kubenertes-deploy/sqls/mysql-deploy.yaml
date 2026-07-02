@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aiops-mysql
+  labels:
+    app: mysql
+    component: aiops
+  namespace: aiops
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+      component: aiops
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      name: mysql
+      labels:
+        app: mysql
+        component: aiops
+    spec:
+      containers:
+      - name: mysql
+        image: swr.cn-north-4.myhuaweicloud.com/ddn-k8s/docker.io/mysql:8.0.45
+        imagePullPolicy: Always
+        ports:
+        - name: server
+          containerPort: 3306
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: "123456"
+        - name: MYSQL_DATABASE
+          value: aiops
+        - name: MYSQL_USER
+          value: aiops
+        - name: MYSQL_PASSWORD
+          value: aiops
+        livenessProbe:
+          exec:
+            comand: ["mysqladmin","ping","-h","localhost"]
+          initialDelaySeconds: 5
+          periodSeconds: 3
+          timeoutSeconds: 5
+          failureThreshold: 5
+        readinessProbe:
+          exec:
+            comand: ["mysqladmin","ping","-h","localhost"]
+          initialDelaySeconds: 5
+          periodSeconds: 3
+          timeoutSeconds: 5
+          failureThreshold: 5
+        volumeMounts:
+        - name: initial-sql-volume
+          mountPath: /docker-entrypoint-initdb.d
+      volumes:
+      - name: initial-sql-volume
+        configMap:
+          name: sql-volume

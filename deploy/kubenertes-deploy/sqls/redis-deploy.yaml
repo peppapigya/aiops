@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aiops-redis
+  labels:
+    app: redis
+    component: aiops
+  namespace: aiops
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+      component: aiops
+  template:
+    metadata:
+      name: redis
+      labels:
+        app: redis
+        component: aiops
+    spec:
+      containers:
+      - name: redis
+        iamge: swr.cn-north-4.myhuaweicloud.com/ddn-k8s/docker.io/redis:7.0.5-alpine
+        imagePullPolicy: Always
+        env:
+        - name: REDIS_PASSWORD
+          value: 123456
+        ports:
+        - name: server
+          containerPort: 6379
+        livenessProbe:
+          exec:
+            command: ["redis-cli","ping"]
+          initialDelaySeconds: 5
+          periodSeconds: 3
+          timeoutSeconds: 5
+          failureThreshold: 3
+        
+    

@@ -1,0 +1,85 @@
+# DevOps Console local docker config
+server:
+  port: ":8081"
+  log_level: "info"
+
+database:
+  type: "mysql"
+  auto_migrate: true
+  mysql:
+    host: "mysql"
+    port: 3306
+    username: "root"
+    password: "root123456"
+    database: "devops_console"
+    charset: "utf8mb4"
+    parse_time: true
+    max_open_conns: 20
+    max_idle_conns: 10
+
+logging:
+  format: "json"
+  time_format: "2006-01-02 15:04:05"
+  report_caller: true
+
+app:
+  name: "DevOps Console"
+  version: "1.0.0"
+  environment: "development"
+
+elasticsearch:
+  timeout: 30
+  retry: 3
+  health_check_interval: 60
+
+kubernetes:
+  config_path: ""
+  timeout: 30
+  retry: 3
+
+swagger:
+  enabled: true
+  host: "localhost:18081"
+  base_path: "/"
+
+health:
+  enabled: true
+  endpoint: "/health"
+  interval: 30
+
+redis:
+  host: redis
+  port: 6379
+  password: ""
+  db: 0
+
+ai:
+  mcp:
+    enabled: false
+    url: ""
+    token: ""
+    max_retries: 3
+
+jwt:
+  secret: "n02y2Zqf4eL0hZ4xjQH9w1zDk1w5FqMnc9R+N8T1v2E="
+  expire-time: 3600
+  refresh-expire-time: 604800
+  exclude-paths:
+    - /api/v1/system/login
+    - /api/v1/sysUser/refresh
+    - /api/v1/sysUser/captcha
+    - /swagger/*
+    - /jobs/script/
+    - /metrics
+    - /ws/*
+    - /health
+
+encryption:
+  key: "So722DGlBzRASCG9so/Knfuy81cdhQ7gArgZjcJHvpQ="
+
+feishu:
+  webhook: ""
+  secret: ""
+  appId: ""
+  appSecret: ""
+  enabled: false

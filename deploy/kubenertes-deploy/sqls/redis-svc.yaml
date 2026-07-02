@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-svc
+  labels:
+    app: redis-svc
+    component: aiops
+  namespace: aiops
+spec:
+  selector:
+    matchLabels:
+      app: redis
+      component: aiops
+  type: ClusterIP
+  ports:
+  - port: 6379
+    targetPort: server
