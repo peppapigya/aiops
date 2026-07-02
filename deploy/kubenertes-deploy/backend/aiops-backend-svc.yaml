@@ -8,9 +8,8 @@ metadata:
   namespace: aiops
 spec:
   selector:
-    matchLabels:
-      app: backend
-      component: aiops
+    app: backend
+    component: aiops
   type: ClusterIP
   ports:
   - port: 8081

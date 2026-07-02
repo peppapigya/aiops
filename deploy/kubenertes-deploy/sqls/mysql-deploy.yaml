@@ -42,14 +42,14 @@ spec:
           value: aiops
         livenessProbe:
           exec:
-            comand: ["mysqladmin","ping","-h","localhost"]
+            command: ["mysqladmin","ping","-h","localhost"]
           initialDelaySeconds: 5
           periodSeconds: 3
           timeoutSeconds: 5
           failureThreshold: 5
         readinessProbe:
           exec:
-            comand: ["mysqladmin","ping","-h","localhost"]
+            command: ["mysqladmin","ping","-h","localhost"]
           initialDelaySeconds: 5
           periodSeconds: 3
           timeoutSeconds: 5

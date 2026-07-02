@@ -9,9 +9,8 @@ metadata:
 spec:
   type: NodePort
   selector:
-    matchLabels:
-      app: frontend
-      component: aiops
+    app: frontend
+    component: aiops
   ports:
     - port: 80
       targetPort: web

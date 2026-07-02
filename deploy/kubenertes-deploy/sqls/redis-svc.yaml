@@ -8,9 +8,8 @@ metadata:
   namespace: aiops
 spec:
   selector:
-    matchLabels:
-      app: redis
-      component: aiops
+    app: redis
+    component: aiops
   type: ClusterIP
   ports:
   - port: 6379

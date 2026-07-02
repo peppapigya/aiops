@@ -7,6 +7,9 @@ metadata:
     component: aiops
   namespace: aiops
 spec:
+  selector:
+    app: mysql
+    component: aiops
   type: ClusterIP
   ports:
   - port: 3306
