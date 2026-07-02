@@ -25,7 +25,7 @@ spec:
         imagePullPolicy: Always
         env:
         - name: REDIS_PASSWORD
-          value: 123456
+          value: "123456"
         ports:
         - name: server
           containerPort: 6379
