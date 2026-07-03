@@ -11,6 +11,8 @@ cd ./aiops/deploy/kubenertes-deploy
 kubectl apply -f ./sqls/
 
 # 部署后端服务
+kubectl apply -f ./backend/
 
+# 
 ```
 

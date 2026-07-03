@@ -42,7 +42,7 @@ spec:
         - name: DB_USER
           value: "aiops"
         - name: DB_PASSWORD
-          value: "123456"
+          value: "aiops"
         - name: DB_NAME
           value: "aiops"
         - name: REDIS_HOST
